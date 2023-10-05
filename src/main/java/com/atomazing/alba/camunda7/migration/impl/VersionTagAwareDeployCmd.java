@@ -85,8 +85,8 @@ class VersionTagAwareDeployCmd implements Command<Void> {
 
     private Stream<ProcessDefinition> deployedProcessDefinitionsStream(DeploymentWithDefinitions deployment) {
         return Optional.ofNullable(deployment.getDeployedProcessDefinitions())
-            .stream()
-            .flatMap(Collection::stream);
+            .orElse(Collections.emptyList())
+            .stream();
     }
 
     private String getDescription(ProcessDefinition definition) {
