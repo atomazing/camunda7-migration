@@ -14,16 +14,25 @@
     <artifactId>camunda7-migration</artifactId>
     <version>CURRENT</version>
     <name>Alba Camunda Migration Library</name>
+    <description>Library for migrating camunda 7 process instances</description>
+    <url>https://github.com/atomazing-com/camunda7-migration</url>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/atomazing-com/camunda7-migration</url>
+    </scm>
 
     <properties>
-        <java.version>17</java.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <build.major.version>1</build.major.version>
         <build.minor.version>1</build.minor.version>
         <build.patch.version>1</build.patch.version>
-        <build.version>${build.major.version}.${build.minor.version}.${build.patch.version}</build.version>
-        <release.version>${build.version}.RELEASE</release.version>
+        <build.version>${build.major.version}.${build.minor.version}.${build.patch.version}-SNAPSHOT</build.version>
         <maven-versions-plugin.version>2.12.0</maven-versions-plugin.version>
         <deploy-maven-plugin.version>1.0.31.RELEASE</deploy-maven-plugin.version>
 
@@ -48,15 +57,6 @@
                         </goals>
                         <configuration>
                             <newVersion>${build.version}</newVersion>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>set-release-version</id>
-                        <goals>
-                            <goal>set</goal>
-                        </goals>
-                        <configuration>
-                            <newVersion>${release.version}</newVersion>
                         </configuration>
                     </execution>
                 </executions>
@@ -110,4 +110,15 @@
             </exclusions>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>

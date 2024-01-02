@@ -31,4 +31,4 @@ jobs:
       run: mvn versions:set@set-build-version -Dbuild.patch.version=${{github.run_number}}
 
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn package
