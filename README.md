@@ -29,6 +29,17 @@ Add `Camunda7-migration` dependency to pom.xml
 </dependency>
 ```
 
+## Add autoconfiguration
+
+Add ```@EnableCamundaMigration``` to configuration class
+
+```java
+@Configuration
+@EnableCamundaMigration
+public class CamundaMigrationConfiguration {
+}
+```
+
 ## Define process and subprocess versions
 
 `Camunda7-migration` library uses version tag for managing process definition versions, so start with adding it to a process definition in bpmn schema:
