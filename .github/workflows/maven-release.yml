@@ -20,6 +20,8 @@ jobs:
         server-id: ossrh
         server-username: MAVEN_USERNAME
         server-password: MAVEN_PASSWORD
+        gpg-private-key: ${{ secrets.OSSRH_PASSWORD }}
+        gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
     - name: Set release version from ref
       run: mvn versions:set@set-build-version -Dbuild.version=${{github.ref_name}}
@@ -29,3 +31,4 @@ jobs:
       env:
         MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+        MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_PASSWORD }}
