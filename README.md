@@ -1,17 +1,22 @@
 # About this library
 
-Camunda’s default behavior is to process any given instance of a process according to a process definition it was started for. However, sometimes an application
-developer you need to introduce changes to a process that should be applied not only for newly created instances, but also for instances created before this
-change. In this case the state of existing process instances should be changed in a way to not only be bind to a new process definition, but also to get process
-state compatible with a new process schema. This is what we call “process migration” and what `Camunda7-migration` library was created for.
+Camunda’s default behavior of any given process instance is to follow the exact version of a process definition that was there the moment the instance started. 
+However, sometimes process may change and the change should be applied not only for newly created instances, but also for instances created before this change. 
+In this case existing process instances should be updated not only to bind to the new process definition, but some process state modifications may also be required. 
+This is what we call “process migration” and what `Camunda7-migration` library was created for.
+
 
 # Core features
 
 * Process state manipulation via Camunda API
 * Incremental migration strategy with SemVer support
-* Support for changing process schema without rolling out a new version of a process definition — works great for testing and debugging on Dev-environments
+* Ability to change process schema without rolling out a new version of a process definition — works great for testing and debugging on Dev-environments
 * Appropriate migrations are applied on application start-up automatically and in a declarative manner — no need for explicit invocation of any routine
 * Migrations are applied in the same transaction in which new process definitions are loaded — this prevents data corruption due to incompatibility of process state with process schema.
+
+#Compatibility
+
+Camunda7-migration library works on java 8 and higher, camunda 7 and spring 5/spring boot 2.
 
 # Usage
 
@@ -165,7 +170,7 @@ On service startup `Camunda7-migration` library will find all instances with ver
 
 # File naming
 
-It's recommended to use version in bpmn file name. Also, it is best practice combining process definitions with same version version in one directory.
+It's recommended to use version in bpmn file name. Also, it is best practice combining process definitions with same version in one directory.
 Example:
 
 * src/main/resources/bpmn
